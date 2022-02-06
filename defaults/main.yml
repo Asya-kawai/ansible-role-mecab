@@ -1,0 +1,9 @@
+---
+mecab_debian_install:
+  - mecab
+  - libmecab-dev
+  - mecab-ipadic-utf8
+mecab_redhat_install:
+  - mecab
+  - mecab-devel
+  - mecab-ipadic

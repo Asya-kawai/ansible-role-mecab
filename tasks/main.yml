@@ -1,0 +1,44 @@
+---
+- name: Update OS package caches for Debian
+  apt:
+    update_cache: yes
+  when: ansible_facts['os_family'] == 'Debian'
+  tags:
+    - mecab
+    - appserver
+
+- name: Update OS package caches for CentOS
+  dnf:
+    update_cache: yes
+  when: ansible_facts['os_family'] == 'RedHat'
+  tags:
+    - mecab
+    - appserver
+
+- name: Update OS packages
+  package:
+    name: '*'
+    state: latest
+  tags:
+    - mecab
+    - appserver
+
+# For Ubuntu
+- name: Install OS packages
+  package:
+    name: "{{ mecab_debian_install }}"
+    state: latest
+  when: ansible_facts['os_family'] == 'Debian'
+  tags:
+    - mecab
+    - appserver
+
+# For CentOS
+- name: Install OS packages for CentOS
+  package:
+    name: "{{ mecab_redhat_install }}"
+    state: latest
+  when: ansible_facts['os_family'] == 'RedHat'
+  tags:
+    - mecab
+    - appserver
