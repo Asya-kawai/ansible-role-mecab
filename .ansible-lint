@@ -7,3 +7,5 @@ warn_list:
 # To ignore package-latest(Package installs should not use latest).
 skip_list:
   - '403'
+  - 'package-latest'
+  - 'fqcn-builtins'
